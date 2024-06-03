@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Obtener Ubicación de IP</title>
+</head>
+<body>
+    <h1>Ubicación de tu IP</h1>
+    <p id="ip-info">Cargando...</p>
+
+    <script>
+        // Reemplaza 'YOUR_ACCESS_TOKEN' con tu token de acceso de ipinfo.io
+        const accessToken = 'c3622e25e33290';
+        
+        fetch(`https://ipinfo.io?token=${accessToken}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ip-info').innerText = 
+                    `Tu dirección IP es: ${data.ip}\n` +
+                    `Ciudad: ${data.city}\n` +
+                    `Región: ${data.region}\n` +
+                    `País: ${data.country}\n` +
+                    `Organización: ${data.org}\n` +
+                    `Ubicación: ${data.loc}`; // Latitud y longitud
+            })
+            .catch(error => console.error('Error al obtener la información de la IP:', error));
+    </script>
+</body>
+</html>
